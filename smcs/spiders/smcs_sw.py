@@ -16,9 +16,13 @@ class SmcsSwSpider(scrapy.Spider):
             "Origin": "http://183.136.190.39:7070",
             "Referer": "http://183.136.190.39:7070/smcs_sw/system/redirect/redirectHomePage.do?path=tm/icpWebsite"
         }
-        yield scrapy.Request(base_url,callback=self.parse, headers=headers, dont_filter=True, cookies=cookies)
+        for page_num in range(3):
+            formdata = {"fuzzy": "false", "page": page_num, "rows": 30, "sort": "id", "order": "asc"}
+            yield scrapy.FormRequest(base_url,callback=self.parse, headers=headers, dont_filter=True, cookies=cookies,
+                                     formdata=formdata)
 
     def parse(self, response):
+        print("-------------------------")
         print(response.text)
 
 
