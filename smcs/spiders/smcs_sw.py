@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import demjson
+from smcs.items import SmcsItem
 
 
 class SmcsSwSpider(scrapy.Spider):
@@ -33,7 +34,8 @@ class SmcsSwSpider(scrapy.Spider):
 
     def parse_detail(self, person_data):
         print("----------sample_data")
-        print(person_data)
+        item = SmcsItem()
+        yield item
 
 
 if __name__ == '__main__':
