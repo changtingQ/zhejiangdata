@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import demjson
 
 
 class SmcsSwSpider(scrapy.Spider):
@@ -20,14 +21,19 @@ class SmcsSwSpider(scrapy.Spider):
         for page_num in range(1, 3):
             formdata = {'fuzzy': 'false', 'page': "{}".format(page_num),
                         "rows": "30", "sort": "id", "order": "asc"}
-            print(formdata)
-            yield scrapy.FormRequest(base_url,callback=self.parse, headers=headers, dont_filter=True, cookies=cookies,
+            yield scrapy.FormRequest(base_url, callback=self.parse, headers=headers, dont_filter=True, cookies=cookies,
                                      formdata=formdata)
 
     def parse(self, response):
-        print("-------------------------")
-        print(response.text)
+        list_data = demjson.decode(response.text)
+        rows_data = list_data.get("rows")
+        if rows_data:
+            for person_data in rows_data:
+                yield self.parse_detail(person_data)
 
+    def parse_detail(self, person_data):
+        print("----------sample_data")
+        print(person_data)
 
 
 if __name__ == '__main__':
