@@ -39,10 +39,10 @@ DOWNLOAD_DELAY = 3
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en',
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
@@ -63,6 +63,14 @@ DOWNLOAD_DELAY = 3
 #}
 
 # Configure item pipelines
+
+PG_HOST = '10.0.0.132'
+PG_PORT = 5432
+PG_USER = 'site_record'
+PG_PWD = 'Yplsec.com'
+PG_DB = 'site_record'
+PG_TABLE = 'xxxx'
+
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
 #    'smcs.pipelines.SmcsPipeline': 300,
