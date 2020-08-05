@@ -14,7 +14,7 @@ class SmcsSwSpider(scrapy.Spider):
             "Cookie": "JSESSIONID=E84175C060B8B43DC918F6FCA5952173",
             "Referer": "http://183.136.190.39:7070/smcs_sw/system/redirect/redirectHomePage.do?path=tm/icpWebsite"
         }
-        yield scrapy.Request(base_url, callback=self.parse, headers=headers, dont_filter=True)
+        yield scrapy.Request(base_url, method="POST",callback=self.parse, headers=headers, dont_filter=True)
 
     def parse(self, response):
         print(response.text)
