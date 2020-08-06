@@ -105,3 +105,15 @@ AUTOTHROTTLE_MAX_DELAY = 60
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# Log Confignation
+import logging
+import datetime
+today = datetime.datetime.now()
+log_file_path = "../log/scrapy_{}_{}_{}_{}_{}_{}.log".format(today.year, today.month, today.day, 
+                                                             today.hour, today.minute, today.second)
+logging.basicConfig(
+    filename=log_file_path,
+    format='%(levelname)s: %(message)s',
+    level=logging.INFO
+)

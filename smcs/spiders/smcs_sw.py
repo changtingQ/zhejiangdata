@@ -26,8 +26,6 @@ class SmcsSwSpider(scrapy.Spider):
                                      formdata=formdata)
 
     def parse(self, response):
-        # print("-------------????")
-        # print(response.text)
         list_data = demjson.decode(response.text)
         rows_data = list_data.get("rows")
 
