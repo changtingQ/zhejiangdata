@@ -74,7 +74,7 @@ class PgSQL(object):
         value = ''
         for key in tdict:
             column += ',' + key
-            value += "','" + (tdict[key])
+            value += "','" + (tdict[key] if tdict[key] else "")
         column = column[1:]
         value = value[2:] + "'"
         sql = "insert into %s(%s) values(%s)" % (table, column, value)

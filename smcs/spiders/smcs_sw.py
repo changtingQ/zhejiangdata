@@ -26,8 +26,11 @@ class SmcsSwSpider(scrapy.Spider):
                                      formdata=formdata)
 
     def parse(self, response):
+        # print("-------------????")
+        # print(response.text)
         list_data = demjson.decode(response.text)
         rows_data = list_data.get("rows")
+
         if rows_data:
             item = SmcsItem()
             for person_data in rows_data:
@@ -37,7 +40,16 @@ class SmcsSwSpider(scrapy.Spider):
     def parse_detail(self, person_data):
         data_deal = dict()
         data_deal["wzfzr"] = person_data.get("wzfzr")
-        data_deal["wzfzrdh"] = person_data.get("wzfzr_sjhm", "123")
+        data_deal["wzfzrdh"] = person_data.get("wzfzrSjhm", "")
+        data_deal["site_name"] = person_data.get("siteName", "")
+        data_deal["license_key"] = person_data.get("licenseKey", "")
+        data_deal["top_domain"] = person_data.get("topDomain", "")
+        data_deal["belonging_city"] = person_data.get("belongingCity", "")
+        data_deal["wzfzr_sjhm"] = person_data.get("wzfzrSjhm", "")
+        data_deal["ztfzrdh"] = person_data.get("wzfzrdh", "")
+        data_deal["ztfzr"] = person_data.get("ztfzr", "")
+        data_deal["ztfzr_sjhm"] = person_data.get("ztfzrSjhm", "")
+
         return data_deal
 
 
