@@ -64,17 +64,26 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 
-PG_HOST = '10.0.0.132'
-PG_PORT = 5432
-PG_USER = 'site_record'
-PG_PWD = 'Yplsec.com'
-PG_DB = 'site_record'
-PG_TABLE = 'xxxx'
+# PG_HOST = '10.0.0.132'
+# PG_PORT = 5432
+# PG_USER = 'site_record'
+# PG_PWD = 'Yplsec.com'
+# PG_DB = 'site_record'
+# PG_TABLE = 'xxxx'
+
+pg_config = {
+    "PG_HOST": "localhost",
+    "PG_USER": "user",
+    "PG_PWD": "user",
+    "PG_DB": "db1",
+    "PG_PORT": 5432,
+    "PG_TABLE": "zhejiangdata"
+}
 
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'smcs.pipelines.SmcsPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'smcs.pipelines.SmcsPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

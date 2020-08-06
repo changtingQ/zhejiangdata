@@ -29,13 +29,16 @@ class SmcsSwSpider(scrapy.Spider):
         list_data = demjson.decode(response.text)
         rows_data = list_data.get("rows")
         if rows_data:
+            item = SmcsItem()
             for person_data in rows_data:
-                yield self.parse_detail(person_data)
+                item = self.parse_detail(person_data)
+                yield item
 
     def parse_detail(self, person_data):
-        print("----------sample_data")
-        item = SmcsItem()
-        yield item
+        data_deal = dict()
+        data_deal["wzfzr"] = person_data.get("wzfzr")
+        data_deal["wzfzrdh"] = person_data.get("wzfzr_sjhm", "123")
+        return data_deal
 
 
 if __name__ == '__main__':
