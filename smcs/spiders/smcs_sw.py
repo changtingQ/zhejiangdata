@@ -48,7 +48,7 @@ class SmcsSwSpider(scrapy.Spider):
         data_deal["ztfzr"] = person_data.get("ztfzr", "")
         data_deal["ztfzr_sjhm"] = person_data.get("ztfzrSjhm", "")
         data_deal["ztdz"] = person_data.get("ztdz", "")
-
+        data_deal["ztdwmc"] = person_data.get("ztdwmc", "")
         return data_deal
 
 
