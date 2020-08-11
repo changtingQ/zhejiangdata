@@ -80,8 +80,16 @@ pg_config = {
     "PG_TABLE": "zhejiangdata"
 }
 
+redis_config = {
+    "r_host": "localhost",
+    "r_port": 6379,
+    "r_db": 0,
+    "r_pd": "123456"
+}
+
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+   'smcs.pipelines.DuplicatesPipeline':200,
    'smcs.pipelines.SmcsPipeline': 300,
 }
 
