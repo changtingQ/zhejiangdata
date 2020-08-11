@@ -30,7 +30,7 @@ class SmcsSwSpider(scrapy.Spider):
         rows_data = list_data.get("rows")
 
         if rows_data:
-            item = SmcsItem()
+            # item = SmcsItem()
             for person_data in rows_data:
                 item = self.parse_detail(person_data)
                 yield item
